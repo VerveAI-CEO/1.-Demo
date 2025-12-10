@@ -7,6 +7,7 @@
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet" />
   <style>
     :root {
+      /* Dark Mode (Standard) */
       --bg: #000000;
       --card-a: #111214;
       --card-b: #151718;
@@ -22,10 +23,27 @@
       --shadow-strong: 0 12px 40px rgba(0,0,0,0.8);
       --shadow-soft: 0 6px 18px rgba(0,0,0,0.6);
       --focus-glow: 0 0 16px rgba(255,216,0,0.12);
-      --glass-bg: rgba(255,255,255,0.03);
       font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
       -webkit-font-smoothing: antialiased;
       -moz-osx-font-smoothing: grayscale;
+    }
+
+    /* Light Mode - wird auf das html-Element angewendet */
+    html.light-mode {
+      --bg: #f8f9fa;
+      --card-a: #ffffff;
+      --card-b: #f8f9fa;
+      --card-c: #f1f3f5;
+      --card-border: rgba(0,0,0,0.08);
+      --muted: #6c757d;
+      --accent: #2a6eff;
+      --accent-2: #4d8aff;
+      --accent-3: #0051d4;
+      --text: #212529;
+      --muted-2: #495057;
+      --shadow-strong: 0 12px 40px rgba(0,0,0,0.1);
+      --shadow-soft: 0 6px 18px rgba(0,0,0,0.08);
+      --focus-glow: 0 0 16px rgba(42,110,255,0.15);
     }
     
     /* ANIMATIONEN */
@@ -45,8 +63,8 @@
     }
     
     @keyframes glow {
-      0%, 100% { box-shadow: 0 0 20px rgba(255, 216, 0, 0.2); }
-      50% { box-shadow: 0 0 30px rgba(255, 216, 0, 0.4); }
+      0%, 100% { box-shadow: 0 0 20px var(--focus-glow); }
+      50% { box-shadow: 0 0 30px var(--focus-glow); }
     }
     
     @keyframes gradientShift {
@@ -66,11 +84,6 @@
     @keyframes bounce {
       0%, 100% { transform: translateY(0); }
       50% { transform: translateY(-5px); }
-    }
-    
-    @keyframes shimmer {
-      0% { background-position: -200% center; }
-      100% { background-position: 200% center; }
     }
     
     @keyframes progressBar {
@@ -93,7 +106,7 @@
       line-height: 1.6;
     }
     
-    /* Verbesserter animierter Hintergrund */
+    /* Animierter Hintergrund */
     .landing-bg {
       position: fixed;
       top: 0;
@@ -110,6 +123,14 @@
       animation: gradientShift 20s ease infinite;
     }
     
+    html.light-mode .landing-bg {
+      background: linear-gradient(-45deg, 
+        rgba(42, 110, 255, 0.05) 0%, 
+        rgba(0, 81, 212, 0.03) 25%, 
+        rgba(0, 0, 0, 0) 50%, 
+        rgba(77, 138, 255, 0.02) 75%);
+    }
+    
     .container { 
       max-width: 1400px; 
       margin: 0 auto; 
@@ -124,8 +145,8 @@
       align-items: center;
       padding: 24px 32px;
       border-radius: 14px;
-      background: linear-gradient(180deg, rgba(255,255,255,0.02), rgba(255,255,255,0.01));
-      border: 1px solid rgba(255,255,255,0.02);
+      background: var(--card-a);
+      border: 1px solid var(--card-border);
       box-shadow: var(--shadow-strong);
       margin-bottom: 28px;
       backdrop-filter: blur(10px);
@@ -137,6 +158,10 @@
       transform: translateY(-2px);
       box-shadow: 0 15px 50px rgba(0,0,0,0.9);
       border-color: rgba(255,216,0,0.1);
+    }
+    
+    html.light-mode header.site-header:hover {
+      border-color: rgba(42,110,255,0.1);
     }
     
     header.site-header h1 {
@@ -159,7 +184,7 @@
     #adminLoginBtn {
       background: transparent;
       color: var(--accent);
-      border: 1px solid rgba(255,255,255,0.08);
+      border: 1px solid var(--card-border);
       padding: 10px 20px;
       border-radius: 8px;
       cursor: pointer;
@@ -171,7 +196,38 @@
     #adminLoginBtn:hover {
       transform: translateY(-2px);
       box-shadow: var(--focus-glow);
-      background: rgba(255,216,0,0.1);
+      background: rgba(255, 216, 0, 0.1);
+    }
+    
+    html.light-mode #adminLoginBtn:hover {
+      background: rgba(42, 110, 255, 0.1);
+    }
+    
+    /* Theme Toggle Button */
+    #themeToggle {
+      background: transparent;
+      color: var(--accent);
+      border: 1px solid var(--card-border);
+      padding: 8px 16px;
+      border-radius: 8px;
+      cursor: pointer;
+      font-weight: 600;
+      transition: all 0.3s ease;
+      font-size: 14px;
+      margin-left: 10px;
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+    }
+    
+    #themeToggle:hover {
+      transform: translateY(-2px);
+      box-shadow: var(--focus-glow);
+      background: rgba(255, 216, 0, 0.1);
+    }
+    
+    html.light-mode #themeToggle:hover {
+      background: rgba(42, 110, 255, 0.1);
     }
     
     /* Verbesserte Hero Section */
@@ -200,14 +256,19 @@
       display: inline-block;
       padding: 8px 16px;
       border-radius: 6px;
-      background: linear-gradient(135deg, rgba(255,216,0,0.15), rgba(255,149,0,0.1));
+      background: linear-gradient(135deg, rgba(255, 216, 0, 0.15), rgba(255, 149, 0, 0.1));
       color: var(--accent);
       font-weight: 600;
       margin-bottom: 20px;
       font-size: 13px;
       text-transform: uppercase;
       animation: float 3s ease-in-out infinite;
-      border: 1px solid rgba(255,216,0,0.2);
+      border: 1px solid rgba(255, 216, 0, 0.2);
+    }
+    
+    html.light-mode .chip {
+      background: linear-gradient(135deg, rgba(42, 110, 255, 0.15), rgba(0, 81, 212, 0.1));
+      border: 1px solid rgba(42, 110, 255, 0.2);
     }
     
     .landing-hero .promo h2 {
@@ -215,7 +276,7 @@
       line-height: 1.1;
       margin-bottom: 24px;
       font-weight: 800;
-      background: linear-gradient(135deg, #ffffff 0%, var(--accent) 50%, var(--accent-3) 100%);
+      background: linear-gradient(135deg, var(--text) 0%, var(--accent) 50%, var(--accent-3) 100%);
       -webkit-background-clip: text;
       -webkit-text-fill-color: transparent;
       background-clip: text;
@@ -244,16 +305,20 @@
       gap: 10px;
       padding: 16px 28px;
       background: linear-gradient(135deg, var(--accent), var(--accent-3));
-      color: #000;
+      color: var(--bg);
       border: none;
       border-radius: 8px;
       font-weight: 700;
       font-size: 16px;
       cursor: pointer;
-      box-shadow: 0 10px 30px rgba(255,216,0,0.3);
+      box-shadow: 0 10px 30px rgba(255, 216, 0, 0.3);
       transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
       position: relative;
       overflow: hidden;
+    }
+    
+    html.light-mode .btn-primary {
+      box-shadow: 0 10px 30px rgba(42, 110, 255, 0.3);
     }
     
     .btn-primary::before {
@@ -273,29 +338,11 @@
     
     .btn-primary:hover {
       transform: translateY(-4px) scale(1.05);
-      box-shadow: 0 20px 50px rgba(255,216,0,0.4);
+      box-shadow: 0 20px 50px rgba(255, 216, 0, 0.4);
     }
     
-    .btn-secondary {
-      display: inline-flex;
-      align-items: center;
-      gap: 10px;
-      padding: 14px 26px;
-      background: transparent;
-      color: var(--accent);
-      border: 2px solid rgba(255,216,0,0.3);
-      border-radius: 8px;
-      font-size: 16px;
-      font-weight: 600;
-      cursor: pointer;
-      transition: all 0.3s ease;
-      backdrop-filter: blur(10px);
-    }
-    
-    .btn-secondary:hover {
-      background: rgba(255,216,0,0.1);
-      border-color: var(--accent);
-      transform: translateY(-2px);
+    html.light-mode .btn-primary:hover {
+      box-shadow: 0 20px 50px rgba(42, 110, 255, 0.4);
     }
     
     /* Stats Grid */
@@ -307,10 +354,10 @@
     }
     
     .stat-card {
-      background: rgba(255,255,255,0.02);
+      background: var(--card-b);
       padding: 24px;
       border-radius: var(--radius);
-      border: 1px solid rgba(255,255,255,0.05);
+      border: 1px solid var(--card-border);
       text-align: center;
       transition: all 0.3s ease;
       animation: fadeIn 0.8s ease-out;
@@ -318,8 +365,12 @@
     
     .stat-card:hover {
       transform: translateY(-5px);
-      border-color: rgba(255,216,0,0.2);
-      background: rgba(255,255,255,0.03);
+      border-color: rgba(255, 216, 0, 0.2);
+      background: var(--card-a);
+    }
+    
+    html.light-mode .stat-card:hover {
+      border-color: rgba(42, 110, 255, 0.2);
     }
     
     .stat-number {
@@ -349,10 +400,10 @@
     }
     
     .feature-card {
-      background: linear-gradient(135deg, rgba(255,255,255,0.03), rgba(255,255,255,0.01));
+      background: var(--card-b);
       padding: 24px;
       border-radius: var(--radius);
-      border: 1px solid rgba(255,255,255,0.05);
+      border: 1px solid var(--card-border);
       transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
       cursor: default;
       animation: fadeIn 0.8s ease-out;
@@ -362,8 +413,13 @@
     
     .feature-card:hover {
       transform: translateY(-8px);
-      border-color: rgba(255,216,0,0.3);
-      box-shadow: 0 15px 40px rgba(255,216,0,0.15);
+      border-color: rgba(255, 216, 0, 0.3);
+      box-shadow: 0 15px 40px rgba(255, 216, 0, 0.15);
+    }
+    
+    html.light-mode .feature-card:hover {
+      border-color: rgba(42, 110, 255, 0.3);
+      box-shadow: 0 15px 40px rgba(42, 110, 255, 0.15);
     }
     
     .feature-icon { 
@@ -386,47 +442,74 @@
       line-height: 1.5; 
     }
     
-    /* Visual Demo Card */
-    .visual-demo-card {
-      background: linear-gradient(135deg, rgba(255,216,0,0.08), rgba(255,149,0,0.05));
+    /* Rechte Spalte */
+    .how-it-works {
+      background: linear-gradient(135deg, rgba(255, 216, 0, 0.08), rgba(255, 149, 0, 0.05));
       padding: 32px;
       border-radius: var(--radius);
-      border: 1px solid rgba(255,216,0,0.2);
-      box-shadow: 0 20px 60px rgba(255,216,0,0.2);
+      border: 1px solid rgba(255, 216, 0, 0.2);
       position: relative;
       overflow: hidden;
       animation: float 6s ease-in-out infinite;
       height: fit-content;
     }
     
-    .visual-demo-card::before {
-      content: '';
-      position: absolute;
-      top: -50%;
-      right: -50%;
-      width: 200%;
-      height: 200%;
-      background: radial-gradient(circle, rgba(255,216,0,0.1), transparent 70%);
-      animation: spin 20s linear infinite;
+    html.light-mode .how-it-works {
+      background: linear-gradient(135deg, rgba(42,110,255,0.08), rgba(0,81,212,0.05));
+      border-color: rgba(42,110,255,0.2);
     }
     
-    .visual-demo-card > * {
-      position: relative;
-      z-index: 1;
+    .how-it-works h3 {
+      margin: 0 0 20px 0;
+      color: var(--text);
+      font-size: 1.6rem;
+      font-weight: 700;
     }
     
-    .demo-buttons {
+    .steps {
       display: flex;
       flex-direction: column;
-      gap: 14px;
-      margin-top: 24px;
+      gap: 20px;
+    }
+    
+    .step {
+      display: flex;
+      align-items: flex-start;
+      gap: 12px;
+    }
+    
+    .step-number {
+      background: linear-gradient(135deg, var(--accent), var(--accent-3));
+      color: var(--bg);
+      width: 32px;
+      height: 32px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-weight: 700;
+      font-size: 14px;
+      flex-shrink: 0;
+    }
+    
+    .step-content h4 {
+      margin: 0 0 4px 0;
+      color: var(--accent);
+      font-size: 1rem;
+    }
+    
+    .step-content p {
+      margin: 0;
+      color: var(--muted-2);
+      font-size: 0.9rem;
+      line-height: 1.5;
     }
     
     /* Use Cases */
     .use-cases {
       margin-top: 60px;
       padding-top: 40px;
-      border-top: 1px solid rgba(255,255,255,0.05);
+      border-top: 1px solid var(--card-border);
     }
     
     .use-case-grid {
@@ -437,34 +520,47 @@
     }
     
     .use-case-card {
-      background: rgba(255,255,255,0.02);
+      background: var(--card-b);
       padding: 24px;
       border-radius: var(--radius);
-      border: 1px solid rgba(255,255,255,0.05);
+      border: 1px solid var(--card-border);
       transition: all 0.3s ease;
     }
     
     .use-case-card:hover {
       transform: translateY(-5px);
-      border-color: rgba(255,216,0,0.2);
+      border-color: rgba(255, 216, 0, 0.2);
+    }
+    
+    html.light-mode .use-case-card:hover {
+      border-color: rgba(42, 110, 255, 0.2);
     }
     
     /* KI-Analyse Anzeige */
     .ki-analysis {
-      background: linear-gradient(135deg, rgba(255,216,0,0.05), rgba(255,149,0,0.03));
+      background: linear-gradient(135deg, rgba(255, 216, 0, 0.05), rgba(255, 149, 0, 0.03));
       padding: 20px;
       border-radius: var(--radius);
-      border: 1px solid rgba(255,216,0,0.1);
+      border: 1px solid rgba(255, 216, 0, 0.1);
       margin-top: 24px;
       display: none;
     }
     
+    html.light-mode .ki-analysis {
+      background: linear-gradient(135deg, rgba(42,110,255,0.05), rgba(0,81,212,0.03));
+      border-color: rgba(42,110,255,0.1);
+    }
+    
     .ki-progress {
       height: 4px;
-      background: rgba(255,255,255,0.1);
+      background: rgba(255, 255, 255, 0.1);
       border-radius: 2px;
       overflow: hidden;
       margin: 12px 0;
+    }
+    
+    html.light-mode .ki-progress {
+      background: rgba(0, 0, 0, 0.1);
     }
     
     .ki-progress-bar {
@@ -488,6 +584,11 @@
       border-radius: 6px;
     }
     
+    html.light-mode .ki-log {
+      background: rgba(0,0,0,0.05);
+      color: var(--muted-2);
+    }
+    
     /* Cards */
     .card {
       border-radius: var(--radius);
@@ -503,9 +604,9 @@
       transform: translateY(-5px);
     }
     
-    .card-a { background: linear-gradient(180deg,var(--card-a),#0f1112); }
-    .card-b { background: linear-gradient(180deg,var(--card-b),#121415); }
-    .card-c { background: linear-gradient(180deg,var(--card-c),#161718); }
+    .card-a { background: var(--card-a); }
+    .card-b { background: var(--card-b); }
+    .card-c { background: var(--card-c); }
     
     h2, h3, h4 {
       margin: 0 0 16px 0;
@@ -534,8 +635,8 @@
       width: 100%;
       padding: 14px 16px;
       border-radius: 8px;
-      border: 1px solid rgba(255,255,255,0.04);
-      background: rgba(255,255,255,0.01);
+      border: 1px solid var(--card-border);
+      background: var(--card-b);
       color: var(--text);
       font-size: 15px;
       transition: all 0.2s ease;
@@ -545,7 +646,7 @@
     input:focus, textarea:focus {
       outline: none;
       box-shadow: var(--focus-glow);
-      border-color: rgba(255,216,0,0.6);
+      border-color: var(--accent);
       transform: translateY(-2px);
     }
     
@@ -577,9 +678,9 @@
       width: 100%;
       padding: 14px 40px 14px 16px;
       border-radius: 8px;
-      background: rgba(255,255,255,0.01);
+      background: var(--card-b);
       color: var(--text);
-      border: 1px solid rgba(255,255,255,0.04);
+      border: 1px solid var(--card-border);
       cursor: pointer;
       font-size: 15px;
       transition: all 0.2s ease;
@@ -589,7 +690,7 @@
     .custom-select .sel-display:focus {
       outline: none;
       box-shadow: var(--focus-glow);
-      border-color: rgba(255,216,0,0.6);
+      border-color: var(--accent);
       transform: translateY(-2px);
     }
     
@@ -612,9 +713,9 @@
       right: 0;
       margin-top: 8px;
       border-radius: 8px;
-      background: linear-gradient(180deg,#0b0d0e,#0f1112);
-      border: 1px solid rgba(255,255,255,0.03);
-      box-shadow: 0 10px 30px rgba(0,0,0,0.7);
+      background: var(--card-a);
+      border: 1px solid var(--card-border);
+      box-shadow: var(--shadow-strong);
       max-height: 280px;
       overflow: auto;
       display: none;
@@ -635,7 +736,12 @@
     
     .custom-select .option:hover,
     .custom-select .option.highlight {
-      background: rgba(255,255,255,0.05);
+      background: rgba(255, 216, 0, 0.1);
+    }
+    
+    html.light-mode .custom-select .option:hover,
+    html.light-mode .custom-select .option.highlight {
+      background: rgba(42, 110, 255, 0.1);
     }
     
     /* Buttons */
@@ -644,42 +750,54 @@
       align-items: center;
       gap: 8px;
       background: linear-gradient(90deg, var(--accent), var(--accent-2));
-      color: #050505;
+      color: var(--bg);
       border: none;
       padding: 12px 20px;
       border-radius: 8px;
       font-weight: 700;
       font-size: 15px;
       cursor: pointer;
-      box-shadow: 0 8px 20px rgba(255,216,0,0.06);
+      box-shadow: 0 8px 20px rgba(255, 216, 0, 0.06);
       transition: all 0.2s ease;
+    }
+    
+    html.light-mode .btn {
+      box-shadow: 0 8px 20px rgba(42, 110, 255, 0.06);
     }
     
     .btn:hover {
       transform: translateY(-3px);
-      box-shadow: 0 12px 25px rgba(255,216,0,0.15);
+      box-shadow: 0 12px 25px rgba(255, 216, 0, 0.15);
+    }
+    
+    html.light-mode .btn:hover {
+      box-shadow: 0 12px 25px rgba(42, 110, 255, 0.15);
     }
     
     .btn-ghost {
       background: transparent;
       color: var(--accent);
-      border: 1px solid rgba(255,255,255,0.08);
+      border: 1px solid var(--card-border);
     }
     
     /* Participant Card */
     .participant-card {
       padding: 20px;
       border-radius: 10px;
-      border: 1px solid rgba(255,255,255,0.03);
+      border: 1px solid var(--card-border);
       margin-bottom: 16px;
-      background: linear-gradient(180deg, rgba(255,255,255,0.01), rgba(255,255,255,0.02));
+      background: var(--card-b);
       animation: slideIn 0.4s ease-out;
       transition: all 0.3s ease;
     }
     
     .participant-card:hover {
       transform: translateY(-3px);
-      border-color: rgba(255,216,0,0.1);
+      border-color: rgba(255, 216, 0, 0.1);
+    }
+    
+    html.light-mode .participant-card:hover {
+      border-color: rgba(42, 110, 255, 0.1);
     }
     
     .role-badge {
@@ -687,7 +805,7 @@
       padding: 6px 12px;
       border-radius: 20px;
       background: var(--accent);
-      color: #000;
+      color: var(--bg);
       font-size: 12px;
       font-weight: 700;
       margin-left: 10px;
@@ -699,7 +817,7 @@
     
     /* Spinner */
     .spinner {
-      border: 4px solid rgba(255,255,255,0.04);
+      border: 4px solid rgba(255, 255, 255, 0.04);
       border-top: 4px solid var(--accent);
       border-radius: 50%;
       width: 40px;
@@ -708,9 +826,13 @@
       margin: 0 auto 12px;
     }
     
+    html.light-mode .spinner {
+      border: 4px solid rgba(0, 0, 0, 0.04);
+    }
+    
     /* Explanation box */
     .explanation {
-      background: rgba(255,255,255,0.01);
+      background: rgba(255, 216, 0, 0.05);
       padding: 16px;
       border-radius: 8px;
       color: var(--muted-2);
@@ -722,19 +844,24 @@
       border-left: 3px solid var(--accent);
     }
     
+    html.light-mode .explanation {
+      background: rgba(42, 110, 255, 0.05);
+    }
+    
     #toast {
       position: fixed;
       right: 24px;
       bottom: 24px;
-      background: #111;
+      background: var(--card-a);
       color: var(--accent);
       padding: 16px 20px;
       border-radius: 8px;
       display: none;
-      box-shadow: 0 10px 30px rgba(0,0,0,0.6);
+      box-shadow: var(--shadow-strong);
       z-index: 9999;
       font-size: 14px;
       animation: slideIn 0.3s ease-out;
+      border: 1px solid var(--card-border);
     }
     
     /* Responsive */
@@ -744,10 +871,17 @@
       .landing-hero .promo h2 { font-size: 2.2rem; }
       .stats-grid { grid-template-columns: 1fr; }
       .feature-grid { grid-template-columns: 1fr; }
+      .cta-buttons {
+        flex-direction: column;
+      }
+      .btn-primary {
+        width: 100%;
+        justify-content: center;
+      }
     }
     
     .label-muted {
-      color: rgba(230,230,230,0.45);
+      color: var(--muted-2);
       font-weight: 600;
       display: block;
       margin-bottom: 8px;
@@ -763,13 +897,17 @@
     .success-box {
       margin-top: 18px;
       padding: 14px 16px;
-      background: linear-gradient(90deg, rgba(255,216,0,0.12), rgba(255,216,0,0.06));
-      color: #050505;
+      background: linear-gradient(90deg, rgba(255, 216, 0, 0.12), rgba(255, 216, 0, 0.06));
+      color: var(--bg);
       border-radius: 8px;
       font-weight: 700;
       display: none;
       font-size: 14px;
       animation: fadeIn 0.5s ease-out;
+    }
+    
+    html.light-mode .success-box {
+      background: linear-gradient(90deg, rgba(42, 110, 255, 0.12), rgba(42, 110, 255, 0.06));
     }
     
     /* Groups Output */
@@ -778,8 +916,8 @@
     }
     
     .group-card {
-      background: rgba(255,255,255,0.02);
-      border: 1px solid rgba(255,255,255,0.05);
+      background: var(--card-b);
+      border: 1px solid var(--card-border);
       border-radius: var(--radius);
       padding: 20px;
       margin-bottom: 20px;
@@ -789,12 +927,16 @@
     .match-score {
       display: inline-block;
       padding: 4px 8px;
-      background: rgba(255,216,0,0.1);
+      background: rgba(255, 216, 0, 0.1);
       color: var(--accent);
       border-radius: 4px;
       font-size: 12px;
       font-weight: 600;
       margin-left: 10px;
+    }
+    
+    html.light-mode .match-score {
+      background: rgba(42, 110, 255, 0.1);
     }
   </style>
 </head>
@@ -807,6 +949,9 @@
       <div class="subtitle">Intelligente Teilnehmerverwaltung & B2B-Matching</div>
     </div>
     <div>
+      <button id="themeToggle" title="Design wechseln">
+        <span id="themeIcon">🌙</span> <span id="themeText">Dark Mode</span>
+      </button>
       <button id="adminLoginBtn" class="btn-ghost">Admin Area</button>
     </div>
   </header>
@@ -815,61 +960,61 @@
   <section id="landing" style="border:none;background:transparent;box-shadow:none">
     <div class="landing-hero">
       <div class="promo">
-        <div class="chip">🚀 DEMO / PRÄSENTATION</div>
+        <div class="chip">DEMO / PRÄSENTATION</div>
         <h2 id="landingTitle">Intelligentes B2B-Matching für Ihre Events</h2>
         <p>
           Erstellen Sie automatisch optimierte Teilnehmergruppen basierend auf Angebot und Nachfrage. 
-          Perfekt für Fachmessen, Netzwerk-Events und Supplier-Matching.
+          Perfekt für Fachmessen, Netzwerk-Events und Supplier-Matching. KI-gestützt, schnell und effizient.
         </p>
         
+        <!-- Haupt-CTA Button -->
         <div class="cta-buttons">
           <button id="tryDemoBtn" class="btn-primary">
-            <span style="animation: bounce 1s ease-in-out infinite">▶</span> Demo starten
+            <span style="animation: bounce 1s ease-in-out infinite">▶</span> Demo jetzt starten
           </button>
-          <button id="openToolBtn" class="btn-secondary">Zum Tool</button>
         </div>
         
         <div class="stats-grid">
           <div class="stat-card">
-            <span class="stat-number">KI</span>
-            <span class="stat-label">Powered</span>
+            <span class="stat-number">94%</span>
+            <span class="stat-label">Trefferquote</span>
           </div>
           <div class="stat-card">
             <span class="stat-number">3x</span>
             <span class="stat-label">Schneller</span>
           </div>
           <div class="stat-card">
-            <span class="stat-number">100%</span>
-            <span class="stat-label">Automatisch</span>
+            <span class="stat-number">24/7</span>
+            <span class="stat-label">Verfügbar</span>
           </div>
         </div>
         
         <div class="feature-grid">
           <div class="feature-card">
-            <span class="feature-icon">🎯</span>
+            <span class="feature-icon">●</span>
             <div class="feature-title">Smart Matching</div>
             <div class="feature-desc">KI-basierte Gruppierung nach Angebot & Nachfrage</div>
           </div>
           <div class="feature-card">
-            <span class="feature-icon">⚡</span>
+            <span class="feature-icon">●</span>
             <div class="feature-title">Blitzschnell</div>
             <div class="feature-desc">Ergebnisse in Sekunden, nicht Stunden</div>
           </div>
           <div class="feature-card">
-            <span class="feature-icon">📊</span>
+            <span class="feature-icon">●</span>
             <div class="feature-title">Export Ready</div>
             <div class="feature-desc">CSV, JSON & Druck-Ansicht inklusive</div>
           </div>
           <div class="feature-card">
-            <span class="feature-icon">🤖</span>
-            <div class="feature-title">Eigene KI-Logik</div>
-            <div class="feature-desc">Intelligente Analyse mit Gewichtungen</div>
+            <span class="feature-icon">●</span>
+            <div class="feature-title">KI-Erklärungen</div>
+            <div class="feature-desc">Automatische Begründung für jede Gruppe</div>
           </div>
         </div>
         
         <!-- KI-Analyse Demo -->
         <div class="ki-analysis" id="kiAnalysis">
-          <h4>🤖 KI-Analyse läuft...</h4>
+          <h4>KI-Analyse läuft...</h4>
           <div class="ki-progress">
             <div class="ki-progress-bar"></div>
           </div>
@@ -888,55 +1033,72 @@ Analyse gestartet...
           <h3>Einsatzbereiche</h3>
           <div class="use-case-grid">
             <div class="use-case-card">
-              <h4>🏭 Maschinenbau</h4>
+              <h4>Maschinenbau</h4>
               <p>Lieferanten finden, Kooperationen bilden, Innovationstreiber identifizieren</p>
             </div>
             <div class="use-case-card">
-              <h4>🎪 Fachmessen</h4>
+              <h4>Fachmessen</h4>
               <p>Besucher vernetzen, Matchmaking automatisieren, Follow-ups vereinfachen</p>
             </div>
             <div class="use-case-card">
-              <h4>🏢 Großunternehmen</h4>
+              <h4>Großunternehmen</h4>
               <p>Interne Abteilungen vernetzen, Wissenstransfer fördern, Synergien nutzen</p>
             </div>
           </div>
         </div>
       </div>
       
+      <!-- RECHTE SPALTE: Wie es funktioniert -->
       <div class="visual">
-        <div class="visual-demo-card">
-          <h3 style="margin:0 0 16px 0; color:#fff; font-size:1.6rem;">Live Demo</h3>
-          <div style="color:var(--muted-2);margin-bottom:24px;font-size:15px;line-height:1.7">
-            Probieren Sie das Tool mit Beispiel-Teilnehmern aus. Klicken Sie auf "Generate Groups" für sofortige Ergebnisse.
-          </div>
-          <div class="demo-buttons">
-            <button id="demoGenerateBtn" class="btn-primary" style="width:100%;justify-content:center">
-              <span style="animation: pulse 2s infinite">✨</span> Generate Groups
-            </button>
-            <button id="demoAltBtn" class="btn-secondary" style="width:100%;justify-content:center">
-              <span>🔄</span> Alternative Vorschläge
-            </button>
-            <button id="demoAnalyzeBtn" class="btn-secondary" style="width:100%;justify-content:center">
-              <span>🤖</span> KI-Analyse anzeigen
-            </button>
+        <div class="how-it-works">
+          <h3>Wie es funktioniert</h3>
+          <div class="steps">
+            <div class="step">
+              <div class="step-number">1</div>
+              <div class="step-content">
+                <h4>Teilnehmer erfassen</h4>
+                <p>Erfassen Sie Angebote und Nachfragen Ihrer Teilnehmer über einfache Formulare.</p>
+              </div>
+            </div>
+            <div class="step">
+              <div class="step-number">2</div>
+              <div class="step-content">
+                <h4>KI-Analyse</h4>
+                <p>Unsere KI analysiert automatisch die Komplementarität zwischen Teilnehmern.</p>
+              </div>
+            </div>
+            <div class="step">
+              <div class="step-number">3</div>
+              <div class="step-content">
+                <h4>Optimale Gruppen</h4>
+                <p>Erhalten Sie optimierte Gruppen basierend auf inhaltlicher Passung.</p>
+              </div>
+            </div>
+            <div class="step">
+              <div class="step-number">4</div>
+              <div class="step-content">
+                <h4>Export & Follow-up</h4>
+                <p>Exportieren Sie Ergebnisse oder drucken Sie direkt für Ihr Event.</p>
+              </div>
+            </div>
           </div>
           
-          <div style="margin-top:24px; padding-top:20px; border-top:1px solid rgba(255,255,255,0.1)">
+          <div style="margin-top:30px; padding-top:20px; border-top:1px solid rgba(255, 216, 0, 0.1)">
             <div style="color:var(--muted-2);font-size:14px;margin-bottom:12px">
-              <strong>Demo-Daten:</strong> 5 Beispiel-Teilnehmer
+              <strong>Vorteile im Überblick:</strong>
             </div>
-            <div style="display:flex;flex-direction:column;gap:8px">
+            <div style="display:flex;flex-direction:column;gap:10px">
               <div style="display:flex;align-items:center;gap:8px">
                 <div style="width:8px;height:8px;background:var(--accent);border-radius:50%"></div>
-                <span style="font-size:13px;color:var(--muted)">Anna Meyer (Commercial)</span>
+                <span style="font-size:13px;color:var(--muted-2)">Reduziert Vorbereitungszeit um 80%</span>
               </div>
               <div style="display:flex;align-items:center;gap:8px">
                 <div style="width:8px;height:8px;background:var(--accent-3);border-radius:50%"></div>
-                <span style="font-size:13px;color:var(--muted)">Karl Schmidt (Technical)</span>
+                <span style="font-size:13px;color:var(--muted-2)">Erhöht Networking-Erfolg signifikant</span>
               </div>
               <div style="display:flex;align-items:center;gap:8px">
                 <div style="width:8px;height:8px;background:var(--accent);border-radius:50%"></div>
-                <span style="font-size:13px;color:var(--muted)">Maria Lopez (Commercial)</span>
+                <span style="font-size:13px;color:var(--muted-2)">Keine manuelle Zuordnung nötig</span>
               </div>
             </div>
           </div>
@@ -1077,7 +1239,7 @@ Analyse gestartet...
         
         <div id="loading" class="loading" style="display:none;margin-top:20px">
           <div class="spinner" aria-hidden="true"></div>
-          <div style="color:var(--muted-2);font-size:14px">🤖 KI analysiert Teilnehmer...</div>
+          <div style="color:var(--muted-2);font-size:14px">KI analysiert Teilnehmer...</div>
         </div>
         
         <div id="results-container" style="margin-top:20px"></div>
@@ -1111,15 +1273,51 @@ Analyse gestartet...
   firebase.initializeApp(firebaseConfig);
   const db = firebase.firestore();
   
+  // ========== THEME MANAGEMENT ==========
+  function initTheme() {
+    const savedTheme = localStorage.getItem('theme');
+    
+    if (!savedTheme) {
+      const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+      setTheme(prefersDark ? 'dark' : 'light');
+    } else {
+      setTheme(savedTheme);
+    }
+  }
+
+  function setTheme(theme) {
+    if (theme === 'light') {
+      document.documentElement.classList.add('light-mode');
+    } else {
+      document.documentElement.classList.remove('light-mode');
+    }
+    localStorage.setItem('theme', theme);
+    updateThemeButton(theme);
+  }
+
+  function toggleTheme() {
+    const isLight = document.documentElement.classList.contains('light-mode');
+    setTheme(isLight ? 'dark' : 'light');
+  }
+
+  function updateThemeButton(theme) {
+    const themeIcon = document.getElementById('themeIcon');
+    const themeText = document.getElementById('themeText');
+    
+    if (theme === 'light') {
+      themeIcon.textContent = '☀️';
+      themeText.textContent = 'Light Mode';
+    } else {
+      themeIcon.textContent = '🌙';
+      themeText.textContent = 'Dark Mode';
+    }
+  }
+  
   // ========== DOM ELEMENTE ==========
   const $ = id => document.getElementById(id);
   const els = {
     landing: $('landing'),
     tryDemoBtn: $('tryDemoBtn'),
-    openToolBtn: $('openToolBtn'),
-    demoGenerateBtn: $('demoGenerateBtn'),
-    demoAltBtn: $('demoAltBtn'),
-    demoAnalyzeBtn: $('demoAnalyzeBtn'),
     mainApp: $('mainApp'),
     adminLoginBtn: $('adminLoginBtn'),
     adminSection: $('adminSection'),
@@ -1141,7 +1339,8 @@ Analyse gestartet...
     adminLogoutBtn: $('adminLogoutBtn'),
     adminSuccess: $('adminSuccess'),
     kiAnalysis: $('kiAnalysis'),
-    kiLog: $('kiLog')
+    kiLog: $('kiLog'),
+    themeToggle: $('themeToggle')
   };
 
   // ========== GLOBALE VARIABLEN ==========
@@ -1298,7 +1497,10 @@ Analyse gestartet...
       this.container = container;
       this.targetId = container.dataset.target;
       this.select = document.getElementById(this.targetId);
-      if (!this.select) return;
+      if (!this.select) {
+        console.error('CustomSelect: Target select not found:', this.targetId);
+        return;
+      }
       
       this.options = Array.from(this.select.options).map(o => ({ 
         value: o.value, 
@@ -1320,7 +1522,7 @@ Analyse gestartet...
       
       this.arrow = document.createElement('span');
       this.arrow.className = 'arrow';
-      this.arrow.innerHTML = '&#9662;';
+      this.arrow.innerHTML = '▼';
       this.display.appendChild(this.arrow);
       this.container.appendChild(this.display);
       
@@ -1450,7 +1652,11 @@ Analyse gestartet...
   
   function enhanceSelects() {
     const customEls = document.querySelectorAll('.custom-select');
-    customEls.forEach(c => new CustomSelect(c));
+    customEls.forEach(c => {
+      if (c.dataset.enhanced) return;
+      new CustomSelect(c);
+      c.dataset.enhanced = 'true';
+    });
   }
 
   // ========== FIRESTORE FUNKTIONEN ==========
@@ -1729,12 +1935,14 @@ Analyse gestartet...
     els.adminSection.style.display = 'block'; 
     els.customerSection.style.display = 'none'; 
     els.adminLoginBtn.style.display = 'none'; 
+    setTimeout(() => enhanceSelects(), 100);
   }
   
   function leaveAdmin(){ 
     els.adminSection.style.display = 'none'; 
     els.customerSection.style.display = 'block'; 
     els.adminLoginBtn.style.display = 'inline-block'; 
+    setTimeout(() => enhanceSelects(), 100);
   }
 
   els.adminLoginBtn.addEventListener('click', () => {
@@ -1994,47 +2202,16 @@ Analyse gestartet...
     els.landing.style.display = 'none';
     els.mainApp.style.display = 'block';
     await loadDemoParticipants();
-    enhanceSelects();
-  });
-
-  els.openToolBtn.addEventListener('click', () => {
-    els.landing.style.display = 'none';
-    els.mainApp.style.display = 'block';
-    enhanceSelects();
-  });
-
-  els.demoGenerateBtn.addEventListener('click', async () => {
-    els.landing.style.display = 'none';
-    els.mainApp.style.display = 'block';
-    
-    if (participants.length < 4) {
-      await loadDemoParticipants();
-    }
-    
-    await new Promise(resolve => setTimeout(resolve, 300));
-    els.createGroupsBtn.click();
-  });
-
-  els.demoAltBtn.addEventListener('click', async () => {
-    els.landing.style.display = 'none';
-    els.mainApp.style.display = 'block';
-    
-    if (participants.length < 4) {
-      await loadDemoParticipants();
-    }
-    
-    await new Promise(resolve => setTimeout(resolve, 300));
-    els.generateAlternativesBtn.click();
-  });
-
-  els.demoAnalyzeBtn.addEventListener('click', () => {
-    els.kiAnalysis.style.display = els.kiAnalysis.style.display === 'none' ? 'block' : 'none';
+    setTimeout(() => enhanceSelects(), 100);
   });
 
   // ========== INITIALISIERUNG ==========
   document.addEventListener('DOMContentLoaded', () => {
-    enhanceSelects();
-    subscribeParticipants();
+    // Theme initialisieren
+    initTheme();
+    
+    // Theme Toggle Event
+    els.themeToggle.addEventListener('click', toggleTheme);
     
     // Feature Cards animieren
     document.querySelectorAll('.feature-card').forEach((card, i) => {
@@ -2046,9 +2223,11 @@ Analyse gestartet...
       card.style.animationDelay = `${i * 0.2}s`;
     });
     
+    subscribeParticipants();
+    
     // Willkommensnachricht
     setTimeout(() => {
-      showToast('🤖 Willkommen beim Matching System!', 3000);
+      showToast('Willkommen beim Matching System!', 3000);
     }, 1000);
   });
 </script>
