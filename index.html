@@ -7,22 +7,23 @@
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet" />
   <style>
     :root {
-      /* Dark Mode (Standard) */
+      /* Dark Mode (Standard) - changed to blue accents instead of yellow */
       --bg: #000000;
       --card-a: #111214;
       --card-b: #151718;
       --card-c: #1a1c1d;
       --card-border: rgba(255,255,255,0.04);
       --muted: #9aa4b2;
-      --accent: #ffd800;
-      --accent-2: #ffea70;
-      --accent-3: #ff9500;
+      /* Blue accents for dark mode */
+      --accent: #2a6eff;
+      --accent-2: #4d8aff;
+      --accent-3: #0051d4;
       --text: #e6e6e6;
       --muted-2: #b7bdc3;
       --radius: 12px;
       --shadow-strong: 0 12px 40px rgba(0,0,0,0.8);
       --shadow-soft: 0 6px 18px rgba(0,0,0,0.6);
-      --focus-glow: 0 0 16px rgba(255,216,0,0.12);
+      --focus-glow: 0 0 16px rgba(42,110,255,0.12);
       font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
       -webkit-font-smoothing: antialiased;
       -moz-osx-font-smoothing: grayscale;
@@ -36,6 +37,7 @@
       --card-c: #f1f3f5;
       --card-border: rgba(0,0,0,0.08);
       --muted: #6c757d;
+      /* keep light-mode accents as previously blue */
       --accent: #2a6eff;
       --accent-2: #4d8aff;
       --accent-3: #0051d4;
@@ -115,10 +117,10 @@
       height: 100%;
       z-index: -1;
       background: linear-gradient(-45deg, 
-        rgba(255, 216, 0, 0.05) 0%, 
-        rgba(255, 149, 0, 0.03) 25%, 
+        rgba(42,110,255,0.05) 0%, 
+        rgba(0,81,212,0.03) 25%, 
         rgba(0, 0, 0, 0) 50%, 
-        rgba(255, 234, 112, 0.02) 75%);
+        rgba(77,138,255,0.02) 75%);
       background-size: 400% 400%;
       animation: gradientShift 20s ease infinite;
     }
@@ -157,7 +159,7 @@
     header.site-header:hover {
       transform: translateY(-2px);
       box-shadow: 0 15px 50px rgba(0,0,0,0.9);
-      border-color: rgba(255,216,0,0.1);
+      border-color: rgba(42,110,255,0.1);
     }
     
     html.light-mode header.site-header:hover {
@@ -196,11 +198,11 @@
     #adminLoginBtn:hover {
       transform: translateY(-2px);
       box-shadow: var(--focus-glow);
-      background: rgba(255, 216, 0, 0.1);
+      background: rgba(42, 110, 255, 0.08);
     }
     
     html.light-mode #adminLoginBtn:hover {
-      background: rgba(42, 110, 255, 0.1);
+      background: rgba(42, 110, 255, 0.08);
     }
     
     /* Theme Toggle Button */
@@ -223,11 +225,11 @@
     #themeToggle:hover {
       transform: translateY(-2px);
       box-shadow: var(--focus-glow);
-      background: rgba(255, 216, 0, 0.1);
+      background: rgba(42, 110, 255, 0.08);
     }
     
     html.light-mode #themeToggle:hover {
-      background: rgba(42, 110, 255, 0.1);
+      background: rgba(42, 110, 255, 0.08);
     }
     
     /* Verbesserte Hero Section */
@@ -256,14 +258,14 @@
       display: inline-block;
       padding: 8px 16px;
       border-radius: 6px;
-      background: linear-gradient(135deg, rgba(255, 216, 0, 0.15), rgba(255, 149, 0, 0.1));
+      background: linear-gradient(135deg, rgba(42,110,255,0.12), rgba(77,138,255,0.06));
       color: var(--accent);
       font-weight: 600;
       margin-bottom: 20px;
       font-size: 13px;
       text-transform: uppercase;
       animation: float 3s ease-in-out infinite;
-      border: 1px solid rgba(255, 216, 0, 0.2);
+      border: 1px solid rgba(42,110,255,0.12);
     }
     
     html.light-mode .chip {
@@ -311,7 +313,7 @@
       font-weight: 700;
       font-size: 16px;
       cursor: pointer;
-      box-shadow: 0 10px 30px rgba(255, 216, 0, 0.3);
+      box-shadow: 0 10px 30px rgba(42,110,255,0.24);
       transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
       position: relative;
       overflow: hidden;
@@ -328,7 +330,7 @@
       left: -100%;
       width: 100%;
       height: 100%;
-      background: linear-gradient(90deg, transparent, rgba(255,255,255,0.3), transparent);
+      background: linear-gradient(90deg, transparent, rgba(255,255,255,0.12), transparent);
       transition: left 0.7s ease;
     }
     
@@ -338,7 +340,7 @@
     
     .btn-primary:hover {
       transform: translateY(-4px) scale(1.05);
-      box-shadow: 0 20px 50px rgba(255, 216, 0, 0.4);
+      box-shadow: 0 20px 50px rgba(42,110,255,0.28);
     }
     
     html.light-mode .btn-primary:hover {
@@ -365,12 +367,12 @@
     
     .stat-card:hover {
       transform: translateY(-5px);
-      border-color: rgba(255, 216, 0, 0.2);
+      border-color: rgba(42,110,255,0.12);
       background: var(--card-a);
     }
     
     html.light-mode .stat-card:hover {
-      border-color: rgba(42, 110, 255, 0.2);
+      border-color: rgba(42, 110, 255, 0.12);
     }
     
     .stat-number {
@@ -413,13 +415,13 @@
     
     .feature-card:hover {
       transform: translateY(-8px);
-      border-color: rgba(255, 216, 0, 0.3);
-      box-shadow: 0 15px 40px rgba(255, 216, 0, 0.15);
+      border-color: rgba(42,110,255,0.12);
+      box-shadow: 0 15px 40px rgba(42,110,255,0.08);
     }
     
     html.light-mode .feature-card:hover {
-      border-color: rgba(42, 110, 255, 0.3);
-      box-shadow: 0 15px 40px rgba(42, 110, 255, 0.15);
+      border-color: rgba(42, 110, 255, 0.12);
+      box-shadow: 0 15px 40px rgba(42, 110, 255, 0.12);
     }
     
     .feature-icon { 
@@ -444,10 +446,10 @@
     
     /* Rechte Spalte */
     .how-it-works {
-      background: linear-gradient(135deg, rgba(255, 216, 0, 0.08), rgba(255, 149, 0, 0.05));
+      background: linear-gradient(135deg, rgba(42,110,255,0.06), rgba(0,81,212,0.03));
       padding: 32px;
       border-radius: var(--radius);
-      border: 1px solid rgba(255, 216, 0, 0.2);
+      border: 1px solid rgba(42,110,255,0.08);
       position: relative;
       overflow: hidden;
       animation: float 6s ease-in-out infinite;
@@ -456,7 +458,7 @@
     
     html.light-mode .how-it-works {
       background: linear-gradient(135deg, rgba(42,110,255,0.08), rgba(0,81,212,0.05));
-      border-color: rgba(42,110,255,0.2);
+      border-color: rgba(42,110,255,0.1);
     }
     
     .how-it-works h3 {
@@ -529,19 +531,19 @@
     
     .use-case-card:hover {
       transform: translateY(-5px);
-      border-color: rgba(255, 216, 0, 0.2);
+      border-color: rgba(42,110,255,0.12);
     }
     
     html.light-mode .use-case-card:hover {
-      border-color: rgba(42, 110, 255, 0.2);
+      border-color: rgba(42, 110, 255, 0.12);
     }
     
     /* KI-Analyse Anzeige */
     .ki-analysis {
-      background: linear-gradient(135deg, rgba(255, 216, 0, 0.05), rgba(255, 149, 0, 0.03));
+      background: linear-gradient(135deg, rgba(42,110,255,0.05), rgba(0,81,212,0.03));
       padding: 20px;
       border-radius: var(--radius);
-      border: 1px solid rgba(255, 216, 0, 0.1);
+      border: 1px solid rgba(42,110,255,0.06);
       margin-top: 24px;
       display: none;
     }
@@ -553,14 +555,14 @@
     
     .ki-progress {
       height: 4px;
-      background: rgba(255, 255, 255, 0.1);
+      background: rgba(255, 255, 255, 0.06);
       border-radius: 2px;
       overflow: hidden;
       margin: 12px 0;
     }
     
     html.light-mode .ki-progress {
-      background: rgba(0, 0, 0, 0.1);
+      background: rgba(0, 0, 0, 0.08);
     }
     
     .ki-progress-bar {
@@ -736,7 +738,7 @@
     
     .custom-select .option:hover,
     .custom-select .option.highlight {
-      background: rgba(255, 216, 0, 0.1);
+      background: rgba(42, 110, 255, 0.08);
     }
     
     html.light-mode .custom-select .option:hover,
@@ -757,7 +759,7 @@
       font-weight: 700;
       font-size: 15px;
       cursor: pointer;
-      box-shadow: 0 8px 20px rgba(255, 216, 0, 0.06);
+      box-shadow: 0 8px 20px rgba(42,110,255,0.06);
       transition: all 0.2s ease;
     }
     
@@ -767,7 +769,7 @@
     
     .btn:hover {
       transform: translateY(-3px);
-      box-shadow: 0 12px 25px rgba(255, 216, 0, 0.15);
+      box-shadow: 0 12px 25px rgba(42,110,255,0.12);
     }
     
     html.light-mode .btn:hover {
@@ -793,7 +795,7 @@
     
     .participant-card:hover {
       transform: translateY(-3px);
-      border-color: rgba(255, 216, 0, 0.1);
+      border-color: rgba(42,110,255,0.08);
     }
     
     html.light-mode .participant-card:hover {
@@ -832,7 +834,7 @@
     
     /* Explanation box */
     .explanation {
-      background: rgba(255, 216, 0, 0.05);
+      background: rgba(42,110,255,0.05);
       padding: 16px;
       border-radius: 8px;
       color: var(--muted-2);
@@ -897,7 +899,7 @@
     .success-box {
       margin-top: 18px;
       padding: 14px 16px;
-      background: linear-gradient(90deg, rgba(255, 216, 0, 0.12), rgba(255, 216, 0, 0.06));
+      background: linear-gradient(90deg, rgba(42,110,255,0.12), rgba(42,110,255,0.06));
       color: var(--bg);
       border-radius: 8px;
       font-weight: 700;
@@ -927,7 +929,7 @@
     .match-score {
       display: inline-block;
       padding: 4px 8px;
-      background: rgba(255, 216, 0, 0.1);
+      background: rgba(42,110,255,0.08);
       color: var(--accent);
       border-radius: 4px;
       font-size: 12px;
@@ -936,7 +938,63 @@
     }
     
     html.light-mode .match-score {
-      background: rgba(42, 110, 255, 0.1);
+      background: rgba(42, 110, 255, 0.08);
+    }
+
+    /* Admin password modal (styled like page) */
+    .modal-overlay {
+      position: fixed;
+      inset: 0;
+      background: rgba(0,0,0,0.6);
+      display: none;
+      align-items: center;
+      justify-content: center;
+      z-index: 10000;
+      padding: 20px;
+    }
+    .modal-overlay.open { display: flex; }
+    .modal {
+      width: 100%;
+      max-width: 520px;
+      background: var(--card-a);
+      border: 1px solid var(--card-border);
+      padding: 20px;
+      border-radius: 12px;
+      box-shadow: var(--shadow-strong);
+      color: var(--text);
+    }
+    .modal h4 { margin-bottom: 8px; color:var(--accent) }
+    .modal p { color: var(--muted-2); margin-bottom: 16px; }
+    .modal .modal-actions { display:flex; gap:10px; justify-content:flex-end; margin-top:12px; }
+    .modal input[type="password"] {
+      width:100%;
+      padding:12px;
+      border-radius:8px;
+      border:1px solid var(--card-border);
+      background:var(--card-b);
+      color:var(--text);
+    }
+
+    /* Large customer thank-you area */
+    #customerThanksBig {
+      display: none;
+      border-radius: 12px;
+      padding: 36px;
+      text-align: center;
+      background: linear-gradient(135deg, rgba(42,110,255,0.08), rgba(42,110,255,0.03));
+      border: 1px solid rgba(42,110,255,0.08);
+      margin-top: 18px;
+    }
+    #customerThanksBig h2 { font-size: 2rem; color: var(--accent); margin-bottom: 10px; }
+    #customerThanksBig p { color: var(--muted-2); font-size: 1.05rem; }
+
+    /* little helper for error-only behavior */
+    .error-only {
+      background: linear-gradient(135deg, rgba(255,50,50,0.06), rgba(255,50,50,0.02));
+      border: 1px solid rgba(255,50,50,0.08);
+      color: #ff8a8a;
+      padding: 14px;
+      border-radius: 8px;
     }
   </style>
 </head>
@@ -1083,7 +1141,7 @@ Analyse gestartet...
             </div>
           </div>
           
-          <div style="margin-top:30px; padding-top:20px; border-top:1px solid rgba(255, 216, 0, 0.1)">
+          <div style="margin-top:30px; padding-top:20px; border-top:1px solid rgba(42,110,255,0.08)">
             <div style="color:var(--muted-2);font-size:14px;margin-bottom:12px">
               <strong>Vorteile im Überblick:</strong>
             </div>
@@ -1150,7 +1208,14 @@ Analyse gestartet...
         </div>
         <button class="btn" id="cust-submit" type="submit">Submit</button>
       </form>
+
       <div id="customerSuccess" class="success-box" role="status" aria-live="polite">✓ Danke — Eintrag empfangen</div>
+
+      <!-- large thank-you shown after submit; prevents re-submission unless reopened via admin -->
+      <div id="customerThanksBig" aria-live="polite">
+        <h2>Danke! Dein Eintrag wurde empfangen.</h2>
+        <p>Wir haben deine Angaben gespeichert. Eine weitere Teilnahme ist deaktiviert — bei Bedarf bitte Admin kontaktieren.</p>
+      </div>
     </section>
     
     <div style="text-align:center;margin-top:20px;color:var(--muted-2);font-size:14px">
@@ -1165,7 +1230,10 @@ Analyse gestartet...
             <h3 style="margin:0;color:var(--accent)">Admin Dashboard</h3>
             <div style="color:var(--muted-2);margin-top:8px;font-size:14px">Management & grouping</div>
           </div>
-          <button id="adminLogoutBtn" class="btn-ghost">Log out</button>
+          <div style="display:flex;gap:8px">
+            <button id="reopen-registration" class="btn-ghost" title="Erneute Registrierung erlauben">Reopen registration</button>
+            <button id="adminLogoutBtn" class="btn-ghost">Log out</button>
+          </div>
         </div>
       </header>
 
@@ -1248,6 +1316,21 @@ Analyse gestartet...
   </main>
 
   <div id="toast" role="status" aria-live="polite"></div>
+
+  <!-- Admin password modal (custom) -->
+  <div id="adminModal" class="modal-overlay" role="dialog" aria-modal="true" aria-hidden="true">
+    <div class="modal" role="document">
+      <h4>Admin Login</h4>
+      <p>Bitte Admin-Passwort eingeben, um auf das Dashboard zuzugreifen.</p>
+      <input id="adminPwdInput" type="password" placeholder="Passwort" aria-label="Admin Passwort" />
+      <div class="modal-actions">
+        <button id="adminCancel" class="btn-ghost">Abbrechen</button>
+        <button id="adminSubmit" class="btn">Anmelden</button>
+      </div>
+      <div id="adminModalError" style="margin-top:10px;display:none;color:#ff9b9b;font-weight:700"></div>
+    </div>
+  </div>
+
 </div>
 
 <!-- Firebase SDKs -->
@@ -1258,7 +1341,7 @@ Analyse gestartet...
   "use strict";
   
   // ========== KONFIGURATION ==========
-  const OPENAI_API_KEY = '';
+  const OPENAI_API_KEY = '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';
   const ADMIN_PASSWORD = 'admin123';
   const firebaseConfig = {
     apiKey: "AIzaSyCoNXOOdXyrDU43I3oaAQhNzD-sW9qlIk4",
@@ -1324,6 +1407,7 @@ Analyse gestartet...
     customerSection: $('customerSection'),
     customerForm: $('customerForm'),
     customerSuccess: $('customerSuccess'),
+    customerThanksBig: $('customerThanksBig'),
     participantForm: $('participant-form'),
     participantsContainer: $('participants-container'),
     createGroupsBtn: $('create-groups'),
@@ -1340,11 +1424,19 @@ Analyse gestartet...
     adminSuccess: $('adminSuccess'),
     kiAnalysis: $('kiAnalysis'),
     kiLog: $('kiLog'),
-    themeToggle: $('themeToggle')
+    themeToggle: $('themeToggle'),
+    // modal
+    adminModal: $('adminModal'),
+    adminPwdInput: $('adminPwdInput'),
+    adminSubmit: $('adminSubmit'),
+    adminCancel: $('adminCancel'),
+    adminModalError: $('adminModalError'),
+    reopenRegistrationBtn: $('reopen-registration')
   };
 
   // ========== GLOBALE VARIABLEN ==========
   let participants = [];
+  let customerSubmitted = false;
   const recentlyAdded = new Map();
 
   // ========== HILFSFUNKTIONEN ==========
@@ -1399,7 +1491,7 @@ Analyse gestartet...
         const delay = Math.max(0, initialDelay*(2**i)+jitter); 
         await new Promise(r=>setTimeout(r,delay)); 
       } 
-    } 
+    }
     throw lastErr; 
   }
   
@@ -1821,10 +1913,11 @@ Analyse gestartet...
     return groups;
   }
 
-  // ========== OPENAI ERKLÄRUNG ==========
+  // ========== OPENAI ERKLÄRUNG (KORRIGIERT) ==========
   async function fetchGPTExplanation(payloadText){
+    // If the key isn't present (or is the placeholder), treat as an error — we will not render groups if AI is not available.
     if (!OPENAI_API_KEY || OPENAI_API_KEY === 'FRONTEND_OPENAI_KEY') {
-      return 'No API key – explanation omitted (frontend placeholder).';
+      throw new Error('OpenAI API key not available');
     }
     
     const prompt = `Explain concisely why the following grouping(s) are sensible based on participants' "We Offer" and "We Seek".\n\n${payloadText}\n\nProvide a short clear explanation for each grouping.`;
@@ -1846,25 +1939,55 @@ Analyse gestartet...
           }, 
           body 
         }, 
-        20000
+        30000  // Erhöhtes Timeout
       );
       
-      if (!resp.ok) { 
-        const t = await resp.text().catch(() => null); 
-        throw new Error(t || `OpenAI ${resp.status}`); 
+      if (!resp.ok) {
+        // Verbesserte Fehlerbehandlung
+        let errorMessage = `OpenAI API error (${resp.status})`;
+        try {
+          const errorText = await resp.text();
+          if (errorText) {
+            const errorJson = JSON.parse(errorText);
+            if (errorJson.error && errorJson.error.message) {
+              errorMessage = errorJson.error.message;
+            } else {
+              errorMessage = errorText;
+            }
+          }
+        } catch (parseErr) {
+          console.error('Error parsing OpenAI error response:', parseErr);
+        }
+        console.error('OpenAI API error details:', {
+          status: resp.status,
+          statusText: resp.statusText,
+          message: errorMessage
+        });
+        throw new Error(errorMessage);
       }
       
-      const j = await resp.json(); 
-      return j.choices?.[0]?.message?.content?.trim() || 'No explanation returned.';
+      const j = await resp.json();
+      const explanation = j.choices?.[0]?.message?.content?.trim();
+      
+      if (!explanation) {
+        console.error('OpenAI response malformed:', j);
+        throw new Error('OpenAI response malformed');
+      }
+      
+      return explanation;
     }
     
-    return retryAsync(call, 3, 700);
+    return retryAsync(call, 3, 1000);
   }
 
   // ========== FORM SUBMISSION HANDLERS ==========
   // Customer Form Submit
   els.customerForm.addEventListener('submit', async (e) => {
     e.preventDefault();
+    if (customerSubmitted) {
+      showToast('Registrierung bereits gesendet. Nur Admin kann erneut öffnen.');
+      return;
+    }
     const btn = $('cust-submit');
     try {
       btn.disabled = true;
@@ -1885,10 +2008,14 @@ Analyse gestartet...
       };
       
       const ref = await db.collection('participants').add(payload);
-      showYouAreIn(els.customerSuccess);
+      // show large thank you and prevent further submissions from public UI
+      customerSubmitted = true;
+      els.customerForm.style.display = 'none';
+      els.customerThanksBig.style.display = 'block';
       recentlyAdded.set(ref.id, setTimeout(() => recentlyAdded.delete(ref.id), 6000));
       setTimeout(() => showBadgeForId(ref.id), 120);
-      els.customerForm.reset();
+      // ensure small success box hidden (we use big one)
+      els.customerSuccess.style.display = 'none';
     } catch (err) {
       showToast(err.message || 'Error registering');
     } finally {
@@ -1930,7 +2057,48 @@ Analyse gestartet...
     }
   });
 
-  // ========== ADMIN CONTROLS ==========
+  // ========== ADMIN CONTROLS (CUSTOM MODAL) ==========
+  function openAdminModal(){
+    els.adminModal.classList.add('open');
+    els.adminModal.setAttribute('aria-hidden','false');
+    els.adminModalError.style.display = 'none';
+    els.adminPwdInput.value = '';
+    setTimeout(()=> els.adminPwdInput.focus(), 100);
+  }
+  function closeAdminModal(){
+    els.adminModal.classList.remove('open');
+    els.adminModal.setAttribute('aria-hidden','true');
+  }
+
+  els.adminLoginBtn.addEventListener('click', () => {
+    openAdminModal();
+  });
+
+  els.adminCancel.addEventListener('click', (e) => {
+    e.preventDefault();
+    closeAdminModal();
+  });
+
+  els.adminSubmit.addEventListener('click', (e) => {
+    e.preventDefault();
+    const pwd = els.adminPwdInput.value || '';
+    if (pwd !== ADMIN_PASSWORD){
+      els.adminModalError.innerText = 'Falsches Passwort';
+      els.adminModalError.style.display = 'block';
+      els.adminPwdInput.focus();
+      showToast('Wrong password');
+      return;
+    }
+    closeAdminModal();
+    enterAdmin();
+  });
+
+  els.adminPwdInput.addEventListener('keydown', (e) => {
+    if (e.key === 'Enter') {
+      els.adminSubmit.click();
+    }
+  });
+
   function enterAdmin(){ 
     els.adminSection.style.display = 'block'; 
     els.customerSection.style.display = 'none'; 
@@ -1940,26 +2108,25 @@ Analyse gestartet...
   
   function leaveAdmin(){ 
     els.adminSection.style.display = 'none'; 
-    els.customerSection.style.display = 'block'; 
+    els.customerSection.style.display = customerSubmitted ? 'none' : 'block'; 
     els.adminLoginBtn.style.display = 'inline-block'; 
     setTimeout(() => enhanceSelects(), 100);
   }
-
-  els.adminLoginBtn.addEventListener('click', () => {
-    const pwd = prompt('Enter admin password:');
-    if (pwd !== ADMIN_PASSWORD){ 
-      showToast('Wrong password'); 
-      return; 
-    }
-    enterAdmin();
-  });
 
   els.adminLogoutBtn.addEventListener('click', () => { 
     leaveAdmin(); 
     showToast('Logged out'); 
   });
 
-  // ========== CREATE GROUPS ==========
+  // allow admin to re-open registration for customers
+  els.reopenRegistrationBtn.addEventListener('click', () => {
+    customerSubmitted = false;
+    els.customerForm.style.display = 'block';
+    els.customerThanksBig.style.display = 'none';
+    showToast('Customer registration re-opened');
+  });
+
+  // ========== CREATE GROUPS (AI REQUIRED) ==========
   els.createGroupsBtn.addEventListener('click', async () => {
     if (!participants || participants.length < 4){ 
       showToast('At least 4 participants required.'); 
@@ -1969,53 +2136,61 @@ Analyse gestartet...
     els.loading.style.display = 'block';
     els.resultsContainer.innerHTML = '';
     
-    const groups = generateGroupsDeterministic(participants, 4);
-    if (!groups.length){ 
-      els.resultsContainer.innerHTML = '<p style="color:var(--muted-2)">No groups generated</p>'; 
-      els.loading.style.display = 'none'; 
-      return; 
-    }
-    
-    groups.forEach(g => {
-      const box = document.createElement('div'); 
-      box.className = 'group-card';
-      const members = g.members.map(m => escapeHtmlSafe(m.name)).join(', ');
-      
-      box.innerHTML = `
-        <h3 style="color:var(--accent)">${escapeHtmlSafe(g.title)}</h3>
-        <div style="color:var(--muted-2);margin-top:8px"><strong>Members:</strong> ${members || '-'}</div>
-      `;
-      
-      const explainEl = document.createElement('div');
-      explainEl.className = 'explanation';
-      explainEl.innerText = 'Explanation generating...';
-      box.appendChild(explainEl);
-      els.resultsContainer.appendChild(box);
-    });
-    
-    const groupingText = groups.map(g => 
-      `${g.title}: ${g.members.map(m => `${m.name} (${m.role})`).join(', ')}`
-    ).join('\n');
-    
     try {
-      const explanation = await fetchGPTExplanation(groupingText);
-      els.resultsContainer.querySelectorAll('.explanation').forEach(el => {
-        el.innerText = explanation;
-        el.style.display = 'block';
+      const groups = generateGroupsDeterministic(participants, 4);
+      if (!groups.length){ 
+        els.resultsContainer.innerHTML = '<p style="color:var(--muted-2)">No groups generated</p>'; 
+        els.loading.style.display = 'none'; 
+        return; 
+      }
+      
+      // Build detailed text for OpenAI first. If OpenAI fails we will NOT render groups (per request).
+      const groupingText = groups.map(g => {
+        const memberDetails = g.members.map(m => 
+          `${m.name} (${m.role}): Offers "${(m.weOffer||'').substring(0, 120)}", Seeks "${(m.weSeek||'').substring(0, 120)}"`
+        ).join('\n  ');
+        return `${g.title}:\n  ${memberDetails}`;
+      }).join('\n\n');
+
+      // Attempt to get explanation from OpenAI. If this fails, do nothing except show an error.
+      let explanation;
+      try {
+        explanation = await fetchGPTExplanation(groupingText);
+      } catch (aiErr) {
+        console.error('AI explanation failed, aborting group display:', aiErr);
+        // Show concise error only, no groups
+        els.resultsContainer.innerHTML = `<div class="error-only">Fehler: Die KI-Erklärung konnte nicht erzeugt werden. Gruppen wurden nicht angezeigt.</div>`;
+        showToast('AI explanation failed — groups not displayed');
+        return;
+      }
+      
+      // If explanation succeeded, render groups along with the explanation (same explanation used for all groups)
+      groups.forEach(g => {
+        const box = document.createElement('div'); 
+        box.className = 'group-card';
+        const members = g.members.map(m => escapeHtmlSafe(m.name)).join(', ');
+        
+        box.innerHTML = `
+          <h3 style="color:var(--accent)">${escapeHtmlSafe(g.title)}</h3>
+          <div style="color:var(--muted-2);margin-top:8px"><strong>Members:</strong> ${members || '-'}</div>
+          <div class="explanation">${escapeHtmlSafe(explanation)}</div>
+        `;
+        
+        els.resultsContainer.appendChild(box);
       });
+      
+      showToast('Groups created successfully!');
+      
     } catch(e) {
-      console.error(e);
-      els.resultsContainer.querySelectorAll('.explanation').forEach(el => {
-        el.innerText = 'Explanation failed.';
-        el.style.display = 'block';
-      });
-      showToast('Explanation failed.');
+      console.error('Error creating groups:', e);
+      els.resultsContainer.innerHTML = `<div class="error-only">Fehler beim Erstellen der Gruppen: ${escapeHtmlSafe(e.message || 'Unknown error')}</div>`;
+      showToast('Groups creation failed: ' + (e.message || 'Unknown error'));
     } finally {
       els.loading.style.display = 'none';
     }
   });
 
-  // ========== GENERATE ALTERNATIVES ==========
+  // ========== GENERATE ALTERNATIVES (AI REQUIRED) ==========
   els.generateAlternativesBtn.addEventListener('click', async () => {
     if (!participants || participants.length < 4){ 
       showToast('At least 4 participants required.'); 
@@ -2027,47 +2202,67 @@ Analyse gestartet...
     
     const count = Math.min(3, Math.max(1, Number(els.altCountInput.value) || 2));
     
-    function variant(seed){ 
-      const arr = participants.slice(); 
-      arr.sort((a,b) => ((a.name.charCodeAt(0)+seed) % 5) - ((b.name.charCodeAt(0)+seed) % 5)); 
-      return generateGroupsDeterministic(arr, 4); 
-    }
-    
-    for (let i = 0; i < count; i++){
-      const v = variant(i + 1);
-      const box = document.createElement('div'); 
-      box.className = 'group-card';
-      
-      box.innerHTML = `<h3 style="color:var(--accent)">Alternative ${i+1}</h3>`;
-      
-      v.forEach(g => {
-        const div = document.createElement('div');
-        div.style.color = 'var(--muted-2)';
-        div.style.marginTop = '8px';
-        div.innerHTML = `<strong>${escapeHtmlSafe(g.title)}</strong>: ${escapeHtmlSafe(g.members.map(m => m.name).join(', ') || '-')}`;
-        box.appendChild(div);
-      });
-      
-      const exp = document.createElement('div');
-      exp.className = 'explanation';
-      exp.innerText = 'Fetching explanation...';
-      box.appendChild(exp);
-      els.resultsContainer.appendChild(box);
-      
-      try {
-        const prompt = v.map(g => `${g.title}: ${g.members.map(m => m.name).join(', ')}`).join('\n');
-        const explanation = await fetchGPTExplanation(prompt);
-        exp.innerText = explanation;
-        exp.style.display = 'block';
-      } catch(e) {
-        exp.innerText = 'Explanation failed.';
-        exp.style.display = 'block';
+    try {
+      // We'll generate variants and request explanations for each - if any AI call fails, abort and show an error only.
+      const allAlternatives = [];
+      for (let i = 0; i < count; i++){
+        const arr = participants.slice(); 
+        arr.sort((a,b) => ((a.name.charCodeAt(0)+i+1) % 5) - ((b.name.charCodeAt(0)+i+1) % 5)); 
+        const v = generateGroupsDeterministic(arr, 4);
+        allAlternatives.push(v);
       }
       
-      await new Promise(r => setTimeout(r, 400));
+      // Build combined explanations: call AI per alternative sequentially but abort on first failure (no partial display).
+      const allExplanations = [];
+      for (let i = 0; i < allAlternatives.length; i++){
+        const v = allAlternatives[i];
+        const altText = v.map(g => {
+          const memberDetails = g.members.map(m => 
+            `${m.name}: Offers "${(m.weOffer||'').substring(0, 80)}", Seeks "${(m.weSeek||'').substring(0, 80)}"`
+          ).join(', ');
+          return `${g.title}: ${memberDetails}`;
+        }).join('\n');
+        
+        try {
+          const explanation = await fetchGPTExplanation(altText);
+          allExplanations.push(explanation);
+        } catch(aiErr) {
+          console.error('AI failed for alternatives:', aiErr);
+          els.resultsContainer.innerHTML = `<div class="error-only">Fehler: Die KI-Erklärung für Alternativen konnte nicht erzeugt werden. Keine Alternativen angezeigt.</div>`;
+          showToast('AI explanation failed — alternatives not displayed');
+          return;
+        }
+      }
+      
+      // If we reached here, all explanations are available -> render all alternatives with their explanations
+      allAlternatives.forEach((v, idx) => {
+        const box = document.createElement('div'); 
+        box.className = 'group-card';
+        box.innerHTML = `<h3 style="color:var(--accent)">Alternative ${idx+1}</h3>`;
+        
+        v.forEach(g => {
+          const div = document.createElement('div');
+          div.style.color = 'var(--muted-2)';
+          div.style.marginTop = '8px';
+          div.innerHTML = `<strong>${escapeHtmlSafe(g.title)}</strong>: ${escapeHtmlSafe(g.members.map(m => m.name).join(', ') || '-')}`;
+          box.appendChild(div);
+        });
+        
+        const exp = document.createElement('div');
+        exp.className = 'explanation';
+        exp.innerText = allExplanations[idx] || 'No explanation generated.';
+        box.appendChild(exp);
+        els.resultsContainer.appendChild(box);
+      });
+      
+      showToast(`${count} alternatives generated!`);
+    } catch(e) {
+      console.error('Error generating alternatives:', e);
+      els.resultsContainer.innerHTML = `<div class="error-only">Fehler beim Generieren der Alternativen: ${escapeHtmlSafe(e.message || 'Unknown error')}</div>`;
+      showToast('Error generating alternatives: ' + (e.message || 'Unknown error'));
+    } finally {
+      els.loading.style.display = 'none';
     }
-    
-    els.loading.style.display = 'none';
   });
 
   // ========== EXPORT FUNCTIONS ==========
@@ -2229,6 +2424,9 @@ Analyse gestartet...
     setTimeout(() => {
       showToast('Willkommen beim Matching System!', 3000);
     }, 1000);
+
+    // enhance selects early
+    setTimeout(() => enhanceSelects(), 200);
   });
 </script>
 </body>
